@@ -1,6 +1,23 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {initialTravelPlan} from "../data/places.js";
+import {PlaceTree} from "./placeTree.jsx";
+import {Check, MapPin} from "lucide-react";
 
 const TravelPlan = () => {
+  const [plan, setPlan] = useState(initialTravelPlan)
+  const root=plan[0]
+  const planetIds = root.childIds
+  const handleCompleted = (parentId, childId) => {
+    const parent =plan[parentId]
+    const nextParent = {
+      ...parent,
+      childIds: parent.childIds.filter(id => id !== childId)
+    }
+    setPlan({
+      ...plan,
+    [parentId] : nextParent
+    })
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 p-8">
       <div className="max-w-3xl mx-auto">
@@ -18,14 +35,13 @@ const TravelPlan = () => {
               </p>
             </div>
           </div>
-
           <ol className="space-y-1">
             {planetIds.map((placeId) => (
               <PlaceTree
                 key={placeId}
                 id={placeId}
                 placesById={plan}
-                onComplete={handleComplete}
+                onComplete={handleCompleted}
                 parentId={0}
               />
             ))}

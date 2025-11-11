@@ -3,6 +3,8 @@ import './App.css'
 import React from 'react';
 import Travel from "./component/Travel.jsx";
 import TravelEditable from "./component/TravelEditable.jsx";
+import TravelPlan from "./component/travelPlan.jsx";
+import { PlaceTree } from './component/placeTree.jsx';
 
 
 const App = () => {
@@ -14,7 +16,9 @@ const App = () => {
       {/*<Form2/>*/}
       {/*<Travel/>*/}
 
-      <TravelEditable/>
+      {/*<TravelEditable/>*/}
+       <TravelPlan/>
+
 
     </div>
   );
