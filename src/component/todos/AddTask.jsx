@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import {Plus} from "lucide-react";
 
 const AddTask = ({onAdd}) => {
   const [text, setText] = useState('')

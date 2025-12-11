@@ -1,6 +1,7 @@
 import React from 'react';
+import Task from "./Task.jsx";
 
-const TaskList = ({tasks}) => {
+const TaskList = ({tasks,onChangeTask, onDeleteTask}) => {
   const totalCount = tasks.length
   const completedCount = tasks.filter(task => task.done).length
 

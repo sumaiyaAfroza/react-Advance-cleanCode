@@ -1,6 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
+import {Check, Edit2, Trash2, X} from "lucide-react";
 
-const Task = () => {
+const Task = ({task,onChangeTask, onDeleteTask}) => {
+  const [isEditing, setIsEditing] = useState(false)
+  const [editText, setEditText] = useState(task.text)
+
+  const handleSave = () => {
+if(editText.trim()) {
+  onChangeTask({
+    ...task,
+    text: editText
+  })
+  setIsEditing(false)
+}
+  }
+
+
   return (
     <div>
       <li className="group bg-white rounded-2xl p-5 mb-3 shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100 hover:border-purple-200 transform hover:-translate-y-1">
@@ -33,7 +48,7 @@ const Task = () => {
                 <Check size={18} />
               </button>
               <button
-                onClick={handleCancel}
+                onClick={()=>setIsEditing(false)}
                 className="p-2 bg-gray-400 text-white rounded-lg hover:bg-gray-500 transition-colors"
               >
                 <X size={18} />

@@ -16,6 +16,7 @@ import TaskList from "./component/todos/TaskList.jsx";
 //   { id: 1, name: "Alice", email: "alice@mail.com" },
 //   { id: 2, name: "Bob", email: "bob@mail.com" },
 // ];
+  // const [to, setTo] = useState(contacts[0])
 
 const initialTasks = [
   { id: 1, text: "Visit Charles Bridge at sunrise", done: false },
@@ -41,7 +42,17 @@ const App = () => {
       }
     ])
    }
-  // const [to, setTo] = useState(contacts[0])
+
+   const handleDeleteTask = (taskId) => {
+    const deleteId = tasks.filter(task => task.id !== taskId)
+     setTasks(deleteId)
+   }
+
+   const handleChangeTask = (task) => {
+    const updateTask = tasks.map(singleTask => singleTask.id === task.id ? task : singleTask)
+     setTasks(updateTask)
+   }
+
   return (
     <div>
       <div className="min-h-screen bg-gradient-to-br from-purple-50 via-pink-50 to-blue-50 py-12 px-4">
