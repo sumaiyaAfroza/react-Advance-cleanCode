@@ -27,12 +27,12 @@ const initialTasks = [
 const App = () => {
   const [tasks, setTasks] = useState(initialTasks)
 
-   const getNextId = (data) => {
-    const idIncrese = Math.max(...data.map(item => item.id),0)
-     return idIncrese + 1
-   }
+  const getNextId = (data) => {
+    const increaseId = Math.max(...data.map(id => id.id), 0)
+    return  increaseId + 1
+  }
 
-   const handleAddTask = (text) => {
+  const handleAddTask = (text) => {
     setTasks([
       ...tasks,
       {
@@ -41,17 +41,16 @@ const App = () => {
         done: false
       }
     ])
-   }
+  }
+  const handleChangeTask = (taskItem) => {
+ const idMatch =  tasks.map(task => task.id === taskItem.id ? taskItem : task)
+    setTasks(idMatch)
+  }
 
-   const handleDeleteTask = (taskId) => {
-    const deleteId = tasks.filter(task => task.id !== taskId)
-     setTasks(deleteId)
-   }
-
-   const handleChangeTask = (task) => {
-    const updateTask = tasks.map(singleTask => singleTask.id === task.id ? task : singleTask)
-     setTasks(updateTask)
-   }
+const handleDeleteTask = (itemId) => {
+    const deleteTask = tasks.filter(task => task.id !== itemId)
+  setTasks(deleteTask)
+}
 
   return (
     <div>

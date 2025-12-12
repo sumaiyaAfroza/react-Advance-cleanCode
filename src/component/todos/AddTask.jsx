@@ -10,18 +10,21 @@ const AddTask = ({onAdd}) => {
       setText('')
     }
   }
+
   return (
     <div className="relative mb-8">
       <input
         placeholder="Add a new adventure to your itinerary..."
         value={text}
         onChange={(e) => setText(e.target.value)}
-        onKeyDown={(e) => {
-          if (e.key === 'Enter' && !e.shiftKey) {
-            e.preventDefault();
-            handleSubmit();
+        onKeyDown={(e) =>{
+          if(e.key === 'Enter' && !e.shiftKey) {
+            e.preventDefault()
+            handleSubmit()
           }
-        }}
+        }
+      }
+
         className="w-full px-6 py-4 pr-14 rounded-2xl border-2 border-purple-200 focus:border-purple-500 focus:outline-none text-gray-800 placeholder-gray-400 transition-all duration-300 shadow-sm hover:shadow-md"
       />
       <button

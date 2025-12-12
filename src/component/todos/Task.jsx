@@ -5,15 +5,16 @@ const Task = ({task,onChangeTask, onDeleteTask}) => {
   const [isEditing, setIsEditing] = useState(false)
   const [editText, setEditText] = useState(task.text)
 
-  const handleSave = () => {
-if(editText.trim()) {
-  onChangeTask({
-    ...task,
-    text: editText
-  })
-  setIsEditing(false)
-}
-  }
+   const handleSave = () => {
+   if(editText.trim()) {
+       onChangeTask({
+         ...task,
+         text: editText
+       })
+     setIsEditing(false)
+   }
+   }
+
 
 
   return (
