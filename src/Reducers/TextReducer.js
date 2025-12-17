@@ -1,8 +1,12 @@
 export const TextReducer = (text, action) => {
- switch (action.text) {
+ switch (action.type) {
+   case 'change-text' :
+     return action.text
    case "reset" :
      return ''
-   default : return  text
+
+   default :
+     return  text
  }
 }
 

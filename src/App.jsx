@@ -13,7 +13,7 @@ const App = () => {
   const [tasks, dispatch] = useReducer(taskReducer, initialTasks );
 
   const getNextId = (tasks)=> {
-    return  tasks.length > 0 ? Math.max(...tasks.map(task => task.id) + 1) : 1
+    return  tasks.length > 0 ? Math.max(...tasks.map(task => task.id)) + 1 : 1
   }
 
   const handleAddTask = (text) => {
@@ -28,6 +28,12 @@ const App = () => {
     dispatch({
       type: 'changed',
       task
+    })
+  }
+  const handleDeleteTask = (taskId) => {
+    dispatch({
+      type: 'delete',
+      taskId
     })
   }
 

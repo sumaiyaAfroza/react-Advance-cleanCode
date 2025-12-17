@@ -5,6 +5,14 @@ const AddTask = ({onAdd}) => {
 
   const [text, dispatch ] = useReducer(TextReducer, '')
 
+  const handleChange = (e) => {
+    dispatch({
+      type:'change-text',
+      text:e.target.value
+    })
+  }
+
+
   const handleSubmit = (e) => {
     e.preventDefault()
     if(text.trim()) {
@@ -14,6 +22,8 @@ const AddTask = ({onAdd}) => {
       })
     }
   }
+
+
 
   return (
     <form onSubmit={handleSubmit} className="mb-8">

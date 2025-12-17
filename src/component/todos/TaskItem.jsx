@@ -1,7 +1,8 @@
 import React, {useReducer} from 'react';
 import {EditReducer} from "../../Reducers/EditReducer.js";
+import EditTask from "./EditTask.jsx";
 
-const TaskItem = ({task,onChange}) => {
+const TaskItem = ({task,onChange,onDelete}) => {
   const [isEditing, dispatch ] = useReducer( EditReducer,false)
 
   const handleStartEdit = () => {
@@ -9,7 +10,6 @@ const TaskItem = ({task,onChange}) => {
       type: 'start-edit'
     })
   }
-
   const handleSave = (newText) => {
     onChange({
       ...task,
@@ -19,7 +19,6 @@ const TaskItem = ({task,onChange}) => {
       type: 'stop-editing'
     })
   }
-
   const handleCancel =() => {
     dispatch({
       type: 'stop-editing'
@@ -37,7 +36,7 @@ const TaskItem = ({task,onChange}) => {
         />
 
         {isEditing ? (
-          <TaskEdit task={task} onSave={handleSave} onCancel={handleCancel} />
+          <EditTask task={task} onSave={handleSave} onCancel={handleCancel} />
         ) : (
           <>
           <span

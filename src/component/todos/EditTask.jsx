@@ -1,11 +1,28 @@
-import React from 'react';
+import React, {useReducer} from 'react';
+import {EditTextReducer} from "../../Reducers/editTextReducer.js";
 
-const EditTask = () => {
+const EditTask = ({task, onCancel, onSave}) => {
+  const [editText, dispatch ] = useReducer(EditTextReducer ,task.text)
+
+  const handleChange = (e) => {
+    dispatch ({
+      type: 'change-Edit-Text',
+      text : e.target.value
+    })
+  }
+  const handleSave = () => {
+    if(editText.trim()) {
+      onSave(
+        editText
+      )
+    }
+  }
+
   return (
     <div className="flex-1 flex gap-2">
       <input
         type="text"
-        value={text}
+        value={editText}
         onChange={handleChange}
         className="flex-1 px-4 py-2 rounded-xl border-2 border-blue-300 focus:border-blue-500 focus:outline-none bg-white"
       />
