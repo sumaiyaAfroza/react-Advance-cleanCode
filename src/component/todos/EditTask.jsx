@@ -2,20 +2,20 @@ import React, {useReducer} from 'react';
 import {EditTextReducer} from "../../Reducers/editTextReducer.js";
 
 const EditTask = ({task, onCancel, onSave}) => {
-  const [editText, dispatch ] = useReducer(EditTextReducer ,task.text)
+  const [editText, dispatch ] = useReducer( EditTextReducer,task.text)
 
   const handleChange = (e) => {
-    dispatch ({
-      type: 'change-Edit-Text',
+    dispatch({
+      type: 'edit-text',
       text : e.target.value
     })
   }
+
   const handleSave = () => {
     if(editText.trim()) {
-      onSave(
-        editText
-      )
+      onSave(editText)
     }
+
   }
 
   return (

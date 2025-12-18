@@ -3,26 +3,19 @@ import {TextReducer} from "../../Reducers/TextReducer.js";
 
 const AddTask = ({onAdd}) => {
 
-  const [text, dispatch ] = useReducer(TextReducer, '')
+  const [text, dispatch ] = useReducer(TextReducer ,'')
 
-  const handleChange = (e) => {
-    dispatch({
-      type:'change-text',
-      text:e.target.value
-    })
-  }
-
+const handleChange = (e) => {
+   dispatch({
+     type: 'change',
+     text: e.target.value
+   })
+}
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    if(text.trim()) {
-      onAdd(text)
-      dispatch({
-        type: 'reset'
-      })
-    }
-  }
-
+    e.preventDefault();
+    text.trim() && (onAdd(text), dispatch({type: 'reset'}))
+  };
 
 
   return (

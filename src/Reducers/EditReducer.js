@@ -1,13 +1,12 @@
-export const EditReducer =(isEdit, action) => {
+export const EditReducer = (edit, action) => {
   switch (action.type) {
-      case 'start-edit' :
+      case  'start-edit':
         return true
-    case 'stop-editing' :
+    case 'stop-edit' :
       return false
 
-
       default:
-        return isEdit
+        return edit
 
   }
 

@@ -1,7 +1,7 @@
 import React, {useReducer} from 'react';
 import TaskList from "./component/todos/TaskList.jsx";
 import AddTask from "./component/todos/AddTask.jsx";
-import {taskReducer} from "./Reducers/taskReducer.js";
+import {TaskReducer} from "./Reducers/taskReducer.js";
 
 const initialTasks = [
   { id: 1, text: "Visit Prague Castle", done: true },
@@ -10,30 +10,33 @@ const initialTasks = [
 ]
 
 const App = () => {
-  const [tasks, dispatch] = useReducer(taskReducer, initialTasks );
+  const [tasks, dispatch ] = useReducer(TaskReducer ,initialTasks)
 
-  const getNextId = (tasks)=> {
-    return  tasks.length > 0 ? Math.max(...tasks.map(task => task.id)) + 1 : 1
+  const getNextId = (task) => {
+    return task.length > 0 ? Math.max(...tasks.map(taskk => taskk.id)) + 1 : 1
   }
 
   const handleAddTask = (text) => {
-    dispatch({
-      type: 'added',
-      id: getNextId(tasks),
-      text
-    })
+    dispatch(
+      {
+        type: 'added',
+        id: getNextId(tasks),
+        text
+      }
+      )
   }
 
   const handleChangeTask = (task) => {
     dispatch({
-      type: 'changed',
+      type : 'change-Task',
       task
     })
   }
-  const handleDeleteTask = (taskId) => {
+
+  const handleDeleteTask = (id) => {
     dispatch({
-      type: 'delete',
-      taskId
+      type: 'delete' ,
+       id
     })
   }
 

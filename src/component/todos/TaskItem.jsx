@@ -3,27 +3,30 @@ import {EditReducer} from "../../Reducers/EditReducer.js";
 import EditTask from "./EditTask.jsx";
 
 const TaskItem = ({task,onChange,onDelete}) => {
-  const [isEditing, dispatch ] = useReducer( EditReducer,false)
+  const [isEditing, dispatch] = useReducer(EditReducer ,'')
 
   const handleStartEdit = () => {
     dispatch({
       type: 'start-edit'
     })
   }
+
   const handleSave = (newText) => {
     onChange({
       ...task,
-     text: newText
+      text : newText
     })
     dispatch({
-      type: 'stop-editing'
+      type : 'stop-edit'
     })
   }
-  const handleCancel =() => {
+
+  const handleCancel = () => {
     dispatch({
-      type: 'stop-editing'
+      type: 'stop-edit'
     })
   }
+
 
   return (
     <div>
