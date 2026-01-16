@@ -112,10 +112,10 @@ const useStopwatch = () => {
   }
 }
 
+
 // ============================================================================
 // UI COMPONENTS
 // ============================================================================
-
 const TimeDisplay = ({ time }) => {
   const TimeUnit = ({ value, label }) => (
     <div className="text-center">
@@ -272,7 +272,6 @@ const LapsSection = ({ laps, onDeleteLap, onResumeLap, isStopwatchRunning }) => 
     </div>
   )
 }
-
 // ============================================================================
 // MAIN APP COMPONENT
 // ============================================================================
