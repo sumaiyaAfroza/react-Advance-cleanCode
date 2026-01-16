@@ -1,11 +1,7 @@
-import React from 'react';
+import Stopwatch from "./StopWatch"
 
-const App = () => {
-  return (
-    <div>
-      
-    </div>
-  );
-};
+function App() {
+  return <Stopwatch />
+}
 
-export default App;
+export default App
