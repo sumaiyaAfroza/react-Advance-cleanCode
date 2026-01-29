@@ -35,3 +35,6 @@ const LapsSection = ({ laps, onDeleteLap, onResumeLap, isStopwatchRunning }) => 
   )
 }
 export default LapsSection
+
+
+// 

@@ -338,3 +338,7 @@ export default function App() {
     </div>
   )
 }
+
+
+
+// cmt kora gula reuseable compoment silo na sob gula akta app er modhei diye kora 
